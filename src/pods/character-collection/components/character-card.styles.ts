@@ -5,3 +5,11 @@ export const content = css`
   flex-direction: column;
   justify-content: center;
 `;
+
+export const red = css`
+  background-color: indianred;
+`;
+
+export const green = css`
+  background-color: green;
+`;
