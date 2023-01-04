@@ -10,7 +10,6 @@ export const detail = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
   gap: 4rem;
 `;
 

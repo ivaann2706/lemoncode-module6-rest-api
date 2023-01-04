@@ -1,5 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { linkRoutes } from 'core/router';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { IconButton } from '@material-ui/core';
 
 import * as api from './api';
 import { createEmptyCharacter, Character as Character } from './character.vm';
@@ -9,10 +13,15 @@ import { CharacterComponent } from './character.component';
 export const CharacterContainer: React.FunctionComponent = (props) => {
   const [character, setCharacter] = React.useState<Character>(createEmptyCharacter());
   const { id } = useParams();
+  const history = useHistory();
 
   const handleLoadCharacter = async () => {
     const apiCharacter = await api.getCharacter(id);
     setCharacter(mapCharacterFromApiToVm(apiCharacter));
+  };
+
+  const handleBack = () => {
+    history.push(linkRoutes.characterCollection);
   };
 
   React.useEffect(() => {
@@ -21,5 +30,12 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     }
   }, []);
 
-  return <CharacterComponent character={character} />;
+  return (
+    <>
+      <IconButton onClick={handleBack}>
+        <ArrowBackIcon />
+      </IconButton>
+      <CharacterComponent character={character} />;
+    </>
+  );
 };
