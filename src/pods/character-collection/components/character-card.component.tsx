@@ -5,23 +5,19 @@ import CardHeader from '@material-ui/core/CardHeader/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { CharacterEntityVm } from '../character-collection.vm';
-import * as classes from './character-card.styles';
 import { Status } from './status.component';
 
 interface Props {
   character: CharacterEntityVm;
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+  onDetail: (id: string) => void;
 }
 
 export const CharacterCard: React.FunctionComponent<Props> = (props) => {
-  const { character, onEdit, onDelete } = props;
+  const { character, onDetail } = props;
 
   return (
     <Card>
@@ -34,11 +30,8 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
         <CardMedia image={character.image} style={{ height: 0, paddingTop: '56.25%' }} />
       </CardContent>
       <CardActions>
-        <IconButton onClick={() => onEdit(character.id)}>
-          <EditIcon />
-        </IconButton>
-        <IconButton onClick={() => onDelete(character.id)}>
-          <DeleteIcon />
+        <IconButton onClick={() => onDetail(character.id)}>
+          <VisibilityIcon />
         </IconButton>
       </CardActions>
     </Card>
