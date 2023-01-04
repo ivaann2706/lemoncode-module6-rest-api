@@ -31,12 +31,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
         subheader={character.species + ' - ' + character.gender}
       />
       <CardContent>
-        <div className={classes.content}>
-          <CardMedia image={character.image} style={{ height: 0, paddingTop: '56.25%' }} />
-          <Typography variant="subtitle1" gutterBottom>
-            {character.type}
-          </Typography>
-        </div>
+        <CardMedia image={character.image} style={{ height: 0, paddingTop: '56.25%' }} />
       </CardContent>
       <CardActions>
         <IconButton onClick={() => onEdit(character.id)}>
