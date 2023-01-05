@@ -23,32 +23,48 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
       </div>
       <div>
         <h1>{character.name}</h1>
-        <span className={classes.status}>
-          <span style={{ backgroundColor: STATUS[character.status] }} className={classes.status__icon} />{' '}
-          {character.status}
-        </span>
-        <span />
-        <div className={classes.section}>
-          <span className={classes.text__gray}>Gender:</span>
-          {character.gender}
-        </div>
-        <div className={classes.section}>
-          <span className={classes.text__gray}>Species:</span>
-          {character.species}
-        </div>
-        {!!character.type && (
-          <div className={classes.section}>
-            <span className={classes.text__gray}>Type:</span>
-            {character.type}
+        <div className={classes.detail}>
+          <div>
+            <div className={classes.status}>
+              <span style={{ backgroundColor: STATUS[character.status] }} className={classes.status__icon} />{' '}
+              {character.status}
+            </div>
+            <span />
+            <div className={classes.section}>
+              <span className={classes.text__gray}>Gender:</span>
+              {character.gender}
+            </div>
+            <div className={classes.section}>
+              <span className={classes.text__gray}>Species:</span>
+              {character.species}
+            </div>
+            {!!character.type && (
+              <div className={classes.section}>
+                <span className={classes.text__gray}>Type:</span>
+                {character.type}
+              </div>
+            )}
+            <div className={classes.section}>
+              <span className={classes.text__gray}>Last known location:</span>
+              {character.location}
+            </div>
+            <div className={classes.section}>
+              <span className={classes.text__gray}>First seen in:</span>
+              {character.origin}
+            </div>
           </div>
-        )}
-        <div className={classes.section}>
-          <span className={classes.text__gray}>Last known location:</span>
-          {character.location}
-        </div>
-        <div className={classes.section}>
-          <span className={classes.text__gray}>First seen in:</span>
-          {character.origin}
+          {character.bestSentences?.length > 0 && (
+            <div>
+              <div className={classes.section}>
+                <span className={classes.text__gray}>Best sentences:</span>
+                <ul>
+                  {character.bestSentences.map((sentence, index) => (
+                    <li key={index}>{sentence}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

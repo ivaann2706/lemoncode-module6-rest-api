@@ -9,7 +9,6 @@ export const root = css`
 export const detail = css`
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 4rem;
 `;
 
@@ -21,6 +20,7 @@ export const status = css`
   display: flex;
   align-items: center;
   text-transform: capitalize;
+  margin-bottom: 1rem;
 `;
 
 export const status__icon = css`
@@ -35,7 +35,7 @@ export const section = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const text__gray = css`
