@@ -9,8 +9,8 @@ export const mapCharacterFromApiToVm = (character: apiModel.Character): viewMode
   species: character.species,
   type: character.type,
   gender: character.gender,
-  origin: character.origin.name,
-  location: character.location.name,
+  origin: character.origin,
+  location: character.location,
   image: character.image,
   bestSentences: character.bestSentences || [],
 });

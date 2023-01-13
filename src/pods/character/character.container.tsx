@@ -16,8 +16,13 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
   const history = useHistory();
 
   const handleLoadCharacter = async () => {
-    const apiCharacter = await api.getCharacter(id);
-    setCharacter(mapCharacterFromApiToVm(apiCharacter));
+    try {
+      const apiCharacter = await api.getCharacter(id);
+      setCharacter(mapCharacterFromApiToVm(apiCharacter));
+    } catch (error) {
+      alert('Failed to load the character');
+      history.push(linkRoutes.characterCollection);
+    }
   };
 
   const handleBack = () => {
@@ -32,7 +37,7 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
 
   return (
     <>
-      <IconButton onClick={handleBack}>
+      <IconButton color="primary" onClick={handleBack}>
         <ArrowBackIcon />
       </IconButton>
       <CharacterComponent character={character} />;

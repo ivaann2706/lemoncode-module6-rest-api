@@ -8,7 +8,9 @@ export const useCharacterCollection = () => {
   const [characterCollection, setCharacterCollection] = React.useState<CharacterEntityVm[]>([]);
 
   const loadCharacterCollection = () => {
-    getCharacterCollection().then((result) => setCharacterCollection(mapToCollection(result, mapFromApiToVm)));
+    getCharacterCollection()
+      .then((result) => setCharacterCollection(mapToCollection(result, mapFromApiToVm)))
+      .catch(() => alert('Failed to load character list'));
   };
 
   return { characterCollection, loadCharacterCollection };
