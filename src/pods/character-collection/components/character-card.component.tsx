@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import { CharacterEntityVm } from '../character-collection.vm';
-import { Status } from './status.component';
+import { StatusComponent } from './status.component';
 
 interface Props {
   character: CharacterEntityVm;
@@ -22,7 +22,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   return (
     <Card>
       <CardHeader
-        avatar={<Status status={character.status} />}
+        avatar={<StatusComponent status={character.status} />}
         title={character.name}
         subheader={character.species + ' - ' + character.gender}
       />
@@ -30,7 +30,7 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
         <CardMedia image={character.image} style={{ height: 0, paddingTop: '56.25%' }} />
       </CardContent>
       <CardActions>
-        <IconButton onClick={() => onDetail(character.id)}>
+        <IconButton color="primary" onClick={() => onDetail(character.id)}>
           <VisibilityIcon />
         </IconButton>
       </CardActions>

@@ -23,11 +23,10 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
       </div>
       <div>
         <h1>{character.name}</h1>
-        <span className={classes.status}>
-          <span style={{ backgroundColor: STATUS[character.status] }} className={classes.status__icon} />{' '}
+        <div className={classes.status}>
+          <span style={{ backgroundColor: STATUS[character.status] }} className={classes.status__icon} />
           {character.status}
-        </span>
-        <span />
+        </div>
         <div className={classes.section}>
           <span className={classes.text__gray}>Gender:</span>
           {character.gender}
@@ -44,11 +43,11 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
         )}
         <div className={classes.section}>
           <span className={classes.text__gray}>Last known location:</span>
-          {character.location}
+          {character.location.name}
         </div>
         <div className={classes.section}>
           <span className={classes.text__gray}>First seen in:</span>
-          {character.origin}
+          {character.origin.name}
         </div>
       </div>
     </div>

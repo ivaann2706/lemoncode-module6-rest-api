@@ -11,7 +11,7 @@ interface Props {
   status: string;
 }
 
-export const Status: React.FunctionComponent<Props> = (props) => {
+export const StatusComponent: React.FunctionComponent<Props> = (props) => {
   const { status } = props;
   const [color, setColor] = React.useState(null);
   const [icon, setIcon] = React.useState(<Help />);
