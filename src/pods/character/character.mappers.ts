@@ -14,3 +14,9 @@ export const mapCharacterFromApiToVm = (character: apiModel.Character): viewMode
   image: character.image,
   bestSentences: character.bestSentences || [],
 });
+
+export const mapCharacterFromVmToApi = (character: viewModel.Character): apiModel.Character =>
+  ({
+    ...character,
+    bestSentences: character.bestSentences,
+  } as apiModel.Character);

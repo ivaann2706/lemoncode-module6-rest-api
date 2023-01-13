@@ -18,7 +18,6 @@ export const img = css`
 
 export const status = css`
   display: flex;
-  align-items: center;
   text-transform: capitalize;
   margin-bottom: 1rem;
 `;
@@ -31,13 +30,15 @@ export const status__icon = css`
 `;
 
 export const section = css`
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-bottom: 1rem;
 `;
 
 export const text__gray = css`
   color: gray;
+`;
+
+export const bestSentences = css`
+  margin-top: 4rem;
 `;

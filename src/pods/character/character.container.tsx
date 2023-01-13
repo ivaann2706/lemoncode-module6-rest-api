@@ -7,7 +7,7 @@ import { IconButton } from '@material-ui/core';
 
 import * as api from './api';
 import { createEmptyCharacter, Character as Character } from './character.vm';
-import { mapCharacterFromApiToVm } from './character.mappers';
+import { mapCharacterFromApiToVm, mapCharacterFromVmToApi } from './character.mappers';
 import { CharacterComponent } from './character.component';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
@@ -22,6 +22,17 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
     } catch (error) {
       alert('Failed to load the character');
       history.push(linkRoutes.characterCollection);
+    }
+  };
+
+  const handleUpdateCharacter = async (character: Character) => {
+    const apiCharacter = mapCharacterFromVmToApi(character);
+
+    try {
+      await api.updateCharacter(apiCharacter);
+      setCharacter(character);
+    } catch (error) {
+      alert('Error on update the best sentences');
     }
   };
 
@@ -40,7 +51,7 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
       <IconButton color="primary" onClick={handleBack}>
         <ArrowBackIcon />
       </IconButton>
-      <CharacterComponent character={character} />;
+      <CharacterComponent character={character} onUpdate={handleUpdateCharacter} />;
     </>
   );
 };
