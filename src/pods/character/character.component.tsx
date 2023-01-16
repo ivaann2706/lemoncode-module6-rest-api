@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Character as Character } from './character.vm';
+import { Character } from './character.vm';
 import * as classes from './character.styles';
 
 const STATUS = {
