@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CharacterEntityVm as CharacterEntityVm } from './character-collection.vm';
+import { CharacterEntityVm } from './character-collection.vm';
 import { CharacterCard } from './components/character-card.component';
 import * as classes from './character-collection.styles';
 

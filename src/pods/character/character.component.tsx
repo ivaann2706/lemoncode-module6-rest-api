@@ -4,7 +4,7 @@ import { IconButton, List, ListItem, ListItemIcon, ListItemText } from '@materia
 import AddCircle from '@material-ui/icons/AddCircle';
 import CommentIcon from '@material-ui/icons/Comment';
 
-import { Character as Character } from './character.vm';
+import { Character } from './character.vm';
 import * as classes from './character.styles';
 import { AddSentencesComponent } from './components/add-sentece.component';
 

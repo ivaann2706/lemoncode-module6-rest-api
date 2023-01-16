@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CharacterEntityVm as CharacterEntityVm } from './character-collection.vm';
+import { CharacterEntityVm } from './character-collection.vm';
 import { getCharacterCollection } from './api';
 import { mapFromApiToVm } from './character-collection.mapper';
 import { mapToCollection } from 'common/mappers';

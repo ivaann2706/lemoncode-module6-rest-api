@@ -6,7 +6,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { IconButton } from '@material-ui/core';
 
 import * as api from './api';
-import { createEmptyCharacter, Character as Character } from './character.vm';
+import { createEmptyCharacter, Character } from './character.vm';
 import { mapCharacterFromApiToVm, mapCharacterFromVmToApi } from './character.mappers';
 import { CharacterComponent } from './character.component';
 
