@@ -7,7 +7,6 @@ import { IconButton } from '@material-ui/core';
 
 import * as api from './api';
 import { createEmptyCharacter, Character } from './character.vm';
-import { mapCharacterFromApiToVm } from './character.mappers';
 import { CharacterComponent } from './character.component';
 
 export const CharacterContainer: React.FunctionComponent = (props) => {
@@ -17,8 +16,8 @@ export const CharacterContainer: React.FunctionComponent = (props) => {
 
   const handleLoadCharacter = async () => {
     try {
-      const apiCharacter = await api.getCharacter(id);
-      setCharacter(mapCharacterFromApiToVm(apiCharacter));
+      const character = await api.getCharacter(id);
+      setCharacter(character);
     } catch (error) {
       alert('Failed to load the character');
       history.push(linkRoutes.characterCollection);

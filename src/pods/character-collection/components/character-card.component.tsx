@@ -8,11 +8,11 @@ import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 
-import { CharacterEntityVm } from '../character-collection.vm';
 import { StatusComponent } from './status.component';
+import { CharacterEntity } from '../character-collection.vm';
 
 interface Props {
-  character: CharacterEntityVm;
+  character: CharacterEntity;
   onDetail: (id: string) => void;
 }
 

@@ -5,8 +5,8 @@ export interface Character {
   species: string;
   type: string;
   gender: string;
-  origin: { url: string; name: string };
-  location: { url: string; name: string };
+  origin: { name: string };
+  location: { name: string };
   image: string;
 }
 
@@ -17,7 +17,7 @@ export const createEmptyCharacter = (): Character => ({
   species: '',
   type: '',
   gender: '',
-  origin: { url: '', name: '' },
-  location: { url: '', name: '' },
+  origin: { name: '' },
+  location: { name: '' },
   image: '',
 });

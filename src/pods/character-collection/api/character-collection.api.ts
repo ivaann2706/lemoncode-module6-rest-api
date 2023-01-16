@@ -1,9 +1,28 @@
-import axios from 'axios';
+import { gql } from 'graphql-request';
 
-import { CharacterEntityApi, CharacterEntityApiResponse } from './character-collection.api-model';
+import { graphQLClient } from 'core/api';
+import { CharacterEntityResponse } from './character-collection.api-model';
+import { CharacterEntity } from '../character-collection.vm';
 
-const url = 'https://rickandmortyapi.com/api/character';
+interface GetCharacterCollectionResponse {
+  characters: CharacterEntityResponse;
+}
 
-export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> => {
-  return axios.get<CharacterEntityApiResponse>(url).then(({ data }) => data.results);
+export const getCharacterCollection = async (): Promise<CharacterEntity[]> => {
+  const query = gql`
+    query {
+      characters(page: 1) {
+        results {
+          id
+          name
+          image
+          status
+          species
+          gender
+        }
+      }
+    }
+  `;
+  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(query);
+  return characters.results;
 };
