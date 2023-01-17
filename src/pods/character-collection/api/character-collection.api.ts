@@ -8,10 +8,10 @@ interface GetCharacterCollectionResponse {
   characters: CharacterEntityResponse;
 }
 
-export const getCharacterCollection = async (): Promise<CharacterEntity[]> => {
+export const getCharacterCollection = async (page: number): Promise<CharacterEntity[]> => {
   const query = gql`
-    query {
-      characters(page: 1) {
+    query ($page: Int!) {
+      characters(page: $page) {
         results {
           id
           name
@@ -23,6 +23,6 @@ export const getCharacterCollection = async (): Promise<CharacterEntity[]> => {
       }
     }
   `;
-  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(query);
+  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(query, { page });
   return characters.results;
 };

@@ -7,15 +7,23 @@ import { CharacterCollectionComponent } from './character-collection.component';
 
 export const CharacterCollectionContainer = () => {
   const { characterCollection, loadCharacterCollection } = useCharacterCollection();
+  const [page, setPage] = React.useState(1);
   const history = useHistory();
 
   React.useEffect(() => {
-    loadCharacterCollection();
-  }, []);
+    loadCharacterCollection(page);
+  }, [page]);
 
   const handleDetail = (id: string) => {
     history.push(linkRoutes.editCharacter(id));
   };
 
-  return <CharacterCollectionComponent characterCollection={characterCollection} onDetail={handleDetail} />;
+  return (
+    <CharacterCollectionComponent
+      characterCollection={characterCollection}
+      onDetail={handleDetail}
+      page={page}
+      setPage={setPage}
+    />
+  );
 };
