@@ -1,17 +1,19 @@
 import { gql } from 'graphql-request';
 
 import { graphQLClient } from 'core/api';
-import { CharacterEntityResponse } from './character-collection.api-model';
-import { CharacterEntity } from '../character-collection.vm';
+import { CharacterApiResponse } from './character-collection.api-model';
 
 interface GetCharacterCollectionResponse {
-  characters: CharacterEntityResponse;
+  characters: CharacterApiResponse;
 }
 
-export const getCharacterCollection = async (page: number): Promise<CharacterEntity[]> => {
+export const getCharacterCollection = async (page: number, searchText: string): Promise<CharacterApiResponse> => {
   const query = gql`
-    query ($page: Int!) {
-      characters(page: $page) {
+    query ($page: Int!, $searchText: String) {
+      characters(page: $page, filter: { name: $searchText }) {
+        info {
+          pages
+        }
         results {
           id
           name
@@ -23,6 +25,6 @@ export const getCharacterCollection = async (page: number): Promise<CharacterEnt
       }
     }
   `;
-  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(query, { page });
-  return characters.results;
+  const { characters } = await graphQLClient.request<GetCharacterCollectionResponse>(query, { page, searchText });
+  return characters;
 };
