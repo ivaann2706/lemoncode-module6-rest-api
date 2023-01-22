@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import { Pagination } from '@material-ui/lab';
-import { Input } from '@material-ui/core';
-import { useDebounce } from 'use-debounce';
 
 import { LocationEntity } from './location-collection.vm';
 import * as classes from './location-collection.styles';
 import { LocationCard } from './components/location-card.component';
+import { SearchComponent } from 'common/components';
 
 interface Props {
   locationCollection: LocationEntity[];
@@ -18,21 +17,14 @@ interface Props {
 
 export const LocationCollectionComponent: React.FunctionComponent<Props> = (props) => {
   const { locationCollection, page, setPage, setSearchText, totalPage } = props;
-  const [text, setText] = React.useState('');
-  const [debouncedSearch] = useDebounce(text, 500);
 
   const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
-  React.useEffect(() => {
-    setPage(1);
-    setSearchText(text);
-  }, [debouncedSearch]);
-
   return (
     <div className={classes.root}>
-      <Input placeholder="Search by name…" value={text} onChange={(e) => setText(e.target.value)} />
+      <SearchComponent setPage={setPage} setSearchText={setSearchText} />
       {!!totalPage && (
         <>
           <Pagination className={classes.pagination} count={totalPage} page={page} onChange={handleChangePage} />
