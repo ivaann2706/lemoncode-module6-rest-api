@@ -29,7 +29,7 @@ export const ListComponent: React.FunctionComponent<Props> = (props) => {
           <Pagination className={classes.pagination} count={totalPage} page={page} onChange={handleChangePage} />
         </>
       )}
-      {!totalPage && <p>"Collection" list not available</p>}
+      {!totalPage && <p>List not available</p>}
     </div>
   );
 };
