@@ -38,6 +38,6 @@ export const section = css`
   margin-top: 1rem;
 `;
 
-export const text__gray = css`
+export const label = css`
   color: gray;
 `;

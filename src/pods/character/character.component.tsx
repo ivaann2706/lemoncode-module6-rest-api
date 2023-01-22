@@ -28,25 +28,25 @@ export const CharacterComponent: React.FunctionComponent<Props> = (props) => {
           {character.status}
         </div>
         <div className={classes.section}>
-          <span className={classes.text__gray}>Gender:</span>
+          <span className={classes.label}>Gender:</span>
           {character.gender}
         </div>
         <div className={classes.section}>
-          <span className={classes.text__gray}>Species:</span>
+          <span className={classes.label}>Species:</span>
           {character.species}
         </div>
         {!!character.type && (
           <div className={classes.section}>
-            <span className={classes.text__gray}>Type:</span>
+            <span className={classes.label}>Type:</span>
             {character.type}
           </div>
         )}
         <div className={classes.section}>
-          <span className={classes.text__gray}>Last known location:</span>
+          <span className={classes.label}>Last known location:</span>
           {character.location.name}
         </div>
         <div className={classes.section}>
-          <span className={classes.text__gray}>First seen in:</span>
+          <span className={classes.label}>First seen in:</span>
           {character.origin.name}
         </div>
       </div>

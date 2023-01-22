@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-import { Pagination } from '@material-ui/lab';
-
 import { LocationEntity } from './location-collection.vm';
-import * as classes from './location-collection.styles';
 import { LocationCard } from './components/location-card.component';
-import { SearchComponent } from 'common/components';
+import { ListComponent } from 'common/components/list/list.component';
 
 interface Props {
   locationCollection: LocationEntity[];
@@ -18,27 +15,13 @@ interface Props {
 export const LocationCollectionComponent: React.FunctionComponent<Props> = (props) => {
   const { locationCollection, page, setPage, setSearchText, totalPage } = props;
 
-  const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-  };
-
   return (
-    <div className={classes.root}>
-      <SearchComponent setPage={setPage} setSearchText={setSearchText} />
-      {!!totalPage && (
-        <>
-          <Pagination className={classes.pagination} count={totalPage} page={page} onChange={handleChangePage} />
-          <ul className={classes.list}>
-            {locationCollection.map((location) => (
-              <li key={location.id}>
-                <LocationCard location={location} />
-              </li>
-            ))}
-          </ul>
-          <Pagination className={classes.pagination} count={totalPage} page={page} onChange={handleChangePage} />
-        </>
-      )}
-      {!totalPage && <p>Location list not available</p>}
-    </div>
+    <ListComponent page={page} setPage={setPage} totalPage={totalPage} setSearchText={setSearchText}>
+      {locationCollection.map((location) => (
+        <li key={location.id}>
+          <LocationCard location={location} />
+        </li>
+      ))}
+    </ListComponent>
   );
 };
