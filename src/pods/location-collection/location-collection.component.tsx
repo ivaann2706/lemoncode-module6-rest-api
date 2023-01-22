@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { Typography } from '@material-ui/core';
+
 import { LocationEntity } from './location-collection.vm';
 import { LocationCard } from './components/location-card.component';
 import { ListComponent } from 'common/components/list/list.component';
@@ -16,12 +18,17 @@ export const LocationCollectionComponent: React.FunctionComponent<Props> = (prop
   const { locationCollection, page, setPage, setSearchText, totalPage } = props;
 
   return (
-    <ListComponent page={page} setPage={setPage} totalPage={totalPage} setSearchText={setSearchText}>
-      {locationCollection.map((location) => (
-        <li key={location.id}>
-          <LocationCard location={location} />
-        </li>
-      ))}
-    </ListComponent>
+    <>
+      <Typography variant="h3" align="center">
+        Locations
+      </Typography>
+      <ListComponent page={page} setPage={setPage} totalPage={totalPage} setSearchText={setSearchText}>
+        {locationCollection.map((location) => (
+          <li key={location.id}>
+            <LocationCard location={location} />
+          </li>
+        ))}
+      </ListComponent>
+    </>
   );
 };
